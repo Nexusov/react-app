@@ -1,9 +1,4 @@
-interface ApiSchema {
-  url: string
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
-  body?: BodyInit | null
-  headers?: HeadersInit
-}
+import { ApiSchema } from "../../types/types";
 
 async function fetchData<T>({ url, method = 'GET', body = null, headers = {} }: ApiSchema): Promise<T> {
   const response = await fetch(url, { method, body, headers });
