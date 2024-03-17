@@ -1,34 +1,28 @@
+import { useState } from 'react';
 import {
-  AppRoot,
   SplitLayout,
-  SplitCol,
-  View,
-  Panel,
   PanelHeader,
-  Header,
-  Group,
-  SimpleCell,
-  usePlatform,
+  AppRoot,
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
+import PanelList from '../features/PanelList/PanelList';
+import ContentView from '../features/ContentView/ContentView';
+
+const panels: string[] = ['Факт о котике', 'Узнать возраст по имени'];
+
 const App = () => {
-  const platform = usePlatform();
+
+  const [panel, setPanel] = useState<string>(panels[0]);
 
   return (
     <AppRoot>
-      <SplitLayout header={platform !== 'vkcom' && <PanelHeader delimiter="none" />}>
-        <SplitCol autoSpaced>
-          <View activePanel="main">
-            <Panel id="main">
-              <PanelHeader>VKUI</PanelHeader>
-              <Group header={<Header mode="secondary">Items</Header>}>
-                <SimpleCell>Hello</SimpleCell>
-                <SimpleCell>World</SimpleCell>
-              </Group>
-            </Panel>
-          </View>
-        </SplitCol>
+      <SplitLayout
+        style={{ justifyContent: 'center' }}
+        header={<PanelHeader delimiter='spacing'>VK Reack App made with ❤️</PanelHeader>}
+      >
+        <PanelList setPanel={setPanel} panel={panel} panels={panels} />
+        <ContentView panel={panel} panels={panels} />
       </SplitLayout>
     </AppRoot>
   );
