@@ -37,11 +37,6 @@ const CatFact = () => {
 
   return (
     <Panel>
-      <FormItem>
-        <Button size="l" stretched loading={loading} onClick={fetchCatFact}>
-          Получить факт о котике
-        </Button>
-      </FormItem>
       {error ? (
         <Placeholder
           icon={<Icon24ErrorCircleFillRed width={56} height={56} />}
@@ -59,6 +54,11 @@ const CatFact = () => {
           />
         </FormItem>
       )}
+      <FormItem>
+        <Button size="l" stretched loading={loading} onClick={fetchCatFact}>
+          Получить факт о котике
+        </Button>
+      </FormItem>
     </Panel>
   );
 };
