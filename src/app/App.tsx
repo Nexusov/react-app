@@ -1,12 +1,37 @@
-import './App.css'
+import {
+  AppRoot,
+  SplitLayout,
+  SplitCol,
+  View,
+  Panel,
+  PanelHeader,
+  Header,
+  Group,
+  SimpleCell,
+  usePlatform,
+} from '@vkontakte/vkui';
+import '@vkontakte/vkui/dist/vkui.css';
 
-function App() {
+const App = () => {
+  const platform = usePlatform();
 
   return (
-    <>
-      <h1>HELLO WORLD</h1>
-    </>
-  )
-}
+    <AppRoot>
+      <SplitLayout header={platform !== 'vkcom' && <PanelHeader delimiter="none" />}>
+        <SplitCol autoSpaced>
+          <View activePanel="main">
+            <Panel id="main">
+              <PanelHeader>VKUI</PanelHeader>
+              <Group header={<Header mode="secondary">Items</Header>}>
+                <SimpleCell>Hello</SimpleCell>
+                <SimpleCell>World</SimpleCell>
+              </Group>
+            </Panel>
+          </View>
+        </SplitCol>
+      </SplitLayout>
+    </AppRoot>
+  );
+};
 
 export default App
