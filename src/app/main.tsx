@@ -1,11 +1,12 @@
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
 import { AdaptivityProvider, ConfigProvider } from '@vkontakte/vkui';
+import App from './App.tsx'
 
 const container = document.getElementById('root');
 const root = createRoot(container!); 
 root.render(
-  <ConfigProvider>
+  
+  <ConfigProvider appearance="dark">
     <AdaptivityProvider>
       <App />
     </AdaptivityProvider>
